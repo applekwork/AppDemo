@@ -7,16 +7,26 @@
 //
 
 #import "AppDelegate.h"
-
+#import "UIImage+RenderedImage.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
++ (AppDelegate*)sharedAppDelegate {
+    return (AppDelegate*)[[UIApplication sharedApplication] delegate];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [UITabBar appearance].backgroundImage = [UIImage imageWithRenderColor:UIColorFromRGB(0xffffff) renderSize:CGSizeMake(10., 10.)];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:THEME_BLUE_LIGHT_COLOR} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:THEME_BLUE_COLOR} forState:UIControlStateSelected];
+    _window.rootViewController = [BGViewController shareInstance];
+    _window.backgroundColor = [UIColor whiteColor];
+    [_window makeKeyAndVisible];
     return YES;
 }
 

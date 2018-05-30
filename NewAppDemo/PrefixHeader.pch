@@ -1,0 +1,103 @@
+//
+//  PrefixHeader.pch
+//  NewAppDemo
+//
+//  Created by 郭立军 on 2018/3/23.
+//  Copyright © 2018年 com.guolijun.daofeng. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+#import <DLog.h>
+#import "BaseUIViewController.h"
+#import "BaseUINavigationController.h"
+#import "UIView+Coordinate.h"
+#import "UserAgent.h"
+#import "HttpTool.h"
+#import "MyTool.h"
+#import "JumpTool.h"
+#import <Masonry.h>
+#import <YYModel.h>
+#import "PublicMethod.h"
+#import <IQKeyboardManager.h>
+#import "SDCommonHeader.h"
+#import "NSObject+Check.h"
+#import <YYModel.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "NSObject+XN.h"
+#import "NSString+MD5.h"
+#import <MJRefresh.h>
+#import "XNWebVC.h"
+#import "MJRefreshGifHeader+Gif.h"
+#import "BGViewController.h"
+#import "RemindDialogView.h"
+
+#define IOS7_OR_LATER     ( [[NSNumber numberWithFloat:[[[UIDevice currentDevice] systemVersion] floatValue]] compare:[NSNumber numberWithFloat:7.0]] != NSOrderedAscending )
+#define IOS9_OR_LATER     ( [[NSNumber numberWithFloat:[[[UIDevice currentDevice] systemVersion] floatValue]] compare:[NSNumber numberWithFloat:9.0]] != NSOrderedAscending )
+
+/**定义颜色的宏*/
+#define THEME_GRAY_BG_COLOR             UIColorFromRGB(0xECECEC)
+#define THEME_GRAY                      UIColorFromRGB(0xD8D8D8)
+#define THEME_LINE_CORL                 UIColorFromRGB(0xF0F0F0)
+#define THEME_LINE_VIEW_COLOR           UIColorFromRGB(0xF2F0F5) //分割线颜色
+#define THEME_WHITE                     UIColorFromRGB(0xFFFFFF)
+#define THEME_FONT_BLACK                UIColorFromRGB(0x323232) //黑色字体
+#define FONT_THEME_COLOR                UIColorFromRGB(0x231815) //主题黑色字体
+#define THEME_BLUE_COLOR                UIColorFromRGB(0x356bfe) //主题蓝色
+#define THEME_BLUE_LIGHT_COLOR          UIColorFromRGB(0x06bdfb) //主题浅蓝
+#define THEME_BACKGROUND_COLOR          UIColorFromRGB(0xF2F0F5) //主题背景色
+#define THEME_LOAN_PRODUCT_LIST_COLOR   UIColorFromRGB(0x356BFE) //产品列表选中蓝色
+#define THEME_LOAN_PRODUCT_LIST_BTN_COLOR   UIColorFromRGB(0x727272)//产品列表按钮灰色
+#define THEME_CIRCLE_BLACK_COLOR        UIColorFromRGB(0x323232)
+#define _NavBarColor                    [UIColor colorWithRed:255.0/255.0 green:147.0/255.0 blue:0.0/255.0 alpha:1]
+#define THEME_GRAY_COLOR                    UIColorFromRGB(0xB2B2B2) //主题灰
+#define THEME__IMAGE_GRAY_COLOR             UIColorFromRGB(0xf0f0f0) //图片主题灰
+#define UIColorFromRGB(_rgbValue_) [UIColor \
+colorWithRed:((float)((_rgbValue_ & 0xFF0000) >> 16))/255.0 \
+green:((float)((_rgbValue_ & 0xFF00) >> 8))/255.0 \
+blue:((float)(_rgbValue_ & 0xFF))/255.0 alpha:1.0]
+
+#define AlphaColorWithRGBA(_rgbValue_, _alpha_) [UIColor \
+colorWithRed:((float)((_rgbValue_ & 0xFF0000) >> 16))/255.0 \
+green:((float)((_rgbValue_ & 0xFF00) >> 8))/255.0 \
+blue:((float)(_rgbValue_ & 0xFF))/255.0 alpha:_alpha_]
+
+#define kScreen  [UIScreen mainScreen].bounds.size
+#define ScaleFont (mainWidth>375 ? ScaleX:1.0)
+#define ScaleX   kScreen.width/375
+#define ScaleY   kScreen.height/667
+#define INSET_OUT_GAP 12*ScaleX
+#define INSET_GAP 10*ScaleX
+
+#define mainHeight      [[UIScreen mainScreen] bounds].size.height
+#define mainWidth       [[UIScreen mainScreen] bounds].size.width
+
+#define UIFrameX(view)   view.frame.origin.x
+#define UIFrameY(view)   view.frame.origin.y
+#define UIFrameW(view)   view.frame.size.width
+#define UIFrameH(view)   view.frame.size.height
+
+#define UFrameMinX(view)  CGRectGetMinX((view).frame)
+#define UFrameMinY(view)  CGRectGetMinY((view).frame)
+#define UFrameMidX(view)  CGRectGetMidX((view).frame)
+#define UFrameMidY(view)  CGRectGetMidY((view).frame)
+#define UFrameMaxX(view)  CGRectGetMaxX((view).frame)
+#define UFrameMaxY(view)  CGRectGetMaxY((view).frame)
+//计时器最大值
+#define __VERIFICATION_CODE_VIEW_CONTROLLER_MAX_TIME_OUT  (60)
+
+#define  kBadgeTipStr @"badgeTip"
+
+// 屏幕bounds
+#define kScreenBounds ([[UIScreen mainScreen] bounds])
+
+#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#endif
+#endif /* PrefixHeader_pch */
